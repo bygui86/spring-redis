@@ -1,0 +1,653 @@
+{
+	"info": {
+		"_postman_id": "f57f54f9-1cec-4f82-ad22-90277e43f28f",
+		"name": "SPRING-REDIS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "spring-redis-db",
+			"item": [
+				{
+					"name": "Insert",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "28746901-45d2-4f45-b48a-ade8744765a7",
+								"exec": [
+									"",
+									"tests[\"201 CREATED\"] = responseCode.code === 201;",
+									"",
+									"if ( tests[\"201 CREATED\"] ) {",
+									"    ",
+									"    var data = JSON.parse(responseBody);",
+									"    ",
+									"    pm.environment.set(\"student-id\", data.id);",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Matteo Baiguini\",\n\t\"gender\": \"MALE\",\n\t\"age\": 33\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "28fa0f2c-0c85-4250-928b-a142af9c7581",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "803e5586-eb10-4320-b616-72de4325fd09",
+								"exec": [
+									"",
+									"tests[\"202 ACCEPTED\"] = responseCode.code === 202;",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"{{student-id}}\",\n\t\"name\": \"John Doe\",\n\t\"gender\": \"MALE\",\n\t\"age\": 33\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "28fa0f2c-0c85-4250-928b-a142af9c7581",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/students/{{student-id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"students",
+								"{{student-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "28fa0f2c-0c85-4250-928b-a142af9c7581",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/students/{{student-id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"students",
+								"{{student-id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f4413b9f-fc84-4e0e-a78e-64ccfcc79baa",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "7dceba96-95fc-4528-8b8c-8ad98cf8fe59",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "spring-redis-cache",
+			"item": [
+				{
+					"name": "Insert",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "28746901-45d2-4f45-b48a-ade8744765a7",
+								"exec": [
+									"",
+									"tests[\"201 CREATED\"] = responseCode.code === 201;",
+									"",
+									"if ( tests[\"201 CREATED\"] ) {",
+									"    ",
+									"    var data = JSON.parse(responseBody);",
+									"    ",
+									"    pm.environment.set(\"post-id\", data.id);",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"My cool post\",\n\t\"description\": \"Some cool description of my post\",\n\t\"author\": \"Matteo Baiguini\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "28fa0f2c-0c85-4250-928b-a142af9c7581",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "803e5586-eb10-4320-b616-72de4325fd09",
+								"exec": [
+									"",
+									"tests[\"202 ACCEPTED\"] = responseCode.code === 202;",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"{{post-id}}\",\n\t\"title\": \"My cool post\",\n    \"description\": \"Some cool EXTENDED description of my post\",\n    \"author\": \"John Doe\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "28fa0f2c-0c85-4250-928b-a142af9c7581",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/posts/{{post-id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"posts",
+								"{{post-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "28fa0f2c-0c85-4250-928b-a142af9c7581",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/posts/{{post-id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"posts",
+								"{{post-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all caches",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "28fa0f2c-0c85-4250-928b-a142af9c7581",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/cache",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cache"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get cache by key",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "28fa0f2c-0c85-4250-928b-a142af9c7581",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "71f2b011-6934-413c-8161-5f6f6092603a",
+								"exec": [
+									"",
+									"pm.environment.set(\"cache-key\", \"post-all*\");",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/cache/{{cache-key}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cache",
+								"{{cache-key}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Evict all caches",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "28fa0f2c-0c85-4250-928b-a142af9c7581",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/cache",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cache"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Evict cache by key",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "28fa0f2c-0c85-4250-928b-a142af9c7581",
+								"exec": [
+									"",
+									"tests[\"200 OK\"] = responseCode.code === 200;",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b7e3cc0a-7034-4414-99a9-7f0c68cc4507",
+								"exec": [
+									"",
+									"pm.environment.set(\"cache-key\", \"post-all\");",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/cache/{{cache-key}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cache",
+								"{{cache-key}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b46ca244-ef1c-48f7-9643-a61b0c68cdc4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "31ebca96-5cb8-4cac-8e49-6112d6729478",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
