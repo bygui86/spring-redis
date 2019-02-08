@@ -32,7 +32,7 @@ mvnw clean package spring-boot:run
 
 Now you can call the exposed endpoints.
 
-PLEASE NOTE: A bench of sample data are loading automatically in the DB.
+`PLEASE NOTE: A bench of sample data are loading automatically in the DB.`
 
 ---
 
@@ -58,10 +58,8 @@ PLEASE NOTE: A bench of sample data are loading automatically in the DB.
 	* DELETE /cache   -->   Evict whole cache
 	* DELETE /cache/{key}   -->   Evict cache by key
 
-* Messaging with Redis
-	TBD
-
-PLEASE NOTE: URL root http://localhost:8080
+`PLEASE NOTE: URL root http://localhost:8080`
+`PLEASE NOTE: Messaging with Redis does not expose any endpoint, it's a simple batch application`
 
 ---
 
@@ -81,6 +79,7 @@ PLEASE NOTE: URL root http://localhost:8080
 
 * https://spring.io/guides/gs/messaging-redis/
 * https://dzone.com/articles/intro-to-redis-with-spring-boot
+* https://www.baeldung.com/spring-data-redis-pub-sub
 
 ### Redis
 

@@ -9,6 +9,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
+import org.springframework.data.redis.serializer.GenericToStringSerializer;
 
 
 /**
@@ -36,6 +37,7 @@ public class RedisConfig {
 
 		final RedisTemplate<String, Object> template = new RedisTemplate<>();
 		template.setConnectionFactory(jedisConnectionFactory());
+		template.setValueSerializer(new GenericToStringSerializer<>(Object.class));
 		return template;
 	}
 
@@ -52,18 +54,18 @@ public class RedisConfig {
 	}
 
 	@Bean
+	ChannelTopic channelTopic() {
+
+		return new ChannelTopic("redis-pubsub");
+	}
+
+	@Bean
 	RedisMessageListenerContainer redisMessageListenerContainer() {
 
 		final RedisMessageListenerContainer container = new RedisMessageListenerContainer();
 		container.setConnectionFactory(jedisConnectionFactory());
 		container.addMessageListener(messageListenerAdapter(), channelTopic());
 		return container;
-	}
-
-	@Bean
-	ChannelTopic channelTopic() {
-
-		return new ChannelTopic("pubsub:queue");
 	}
 
 }

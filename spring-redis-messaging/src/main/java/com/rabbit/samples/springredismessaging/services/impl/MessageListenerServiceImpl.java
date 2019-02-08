@@ -32,9 +32,9 @@ public class MessageListenerServiceImpl implements MessageListener {
 
 		getMessageList().add(message.toString());
 
-		log.info("Message received from channel {}: {}",
+		log.info("Message received on channel '{}': {}",
 				new String(message.getChannel()),
-				new String(message.getBody()));
+				message.toString());
 	}
 
 }
