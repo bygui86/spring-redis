@@ -21,7 +21,7 @@ Spring Boot Redis sample projects:
 
 Start Redis
 ```
-docker run -d --rm --name redis -p 6379:6379 redis:alpine redis-server --appendonly yes'
+docker run -d --rm --name redis -p 6379:6379 redis:alpine redis-server --appendonly yes
 ```
 
 Start application
